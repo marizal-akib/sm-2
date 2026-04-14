@@ -1,7 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { LINKS } from "@/lib/constants";
-import { IMAGES } from "@/lib/images";
+import HeroVideoBackground from "./HeroVideoBackground";
 
 const STATS = [
   { label: "SRA Regulated" },
@@ -12,22 +11,19 @@ const STATS = [
 
 export default function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
-      <Image
-        src={IMAGES.cityOfLondon}
-        alt=""
-        aria-hidden
-        fill
-        priority
-        sizes="100vw"
-        className="absolute inset-0 object-cover"
-      />
+    <section
+      className="relative h-screen w-full overflow-hidden"
+      style={{ background: "linear-gradient(to bottom, #1C1C1E, #1E2B52)" }}
+    >
+      <HeroVideoBackground />
 
-      {/* Dark overlay — keeps text readable over the image */}
-      <div aria-hidden className="absolute inset-0 bg-dark/60" />
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/60 to-dark/70"
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(28,28,30,0.6) 0%, rgba(28,28,30,0.85) 100%)",
+        }}
       />
 
       {/* ------------------------------------------------------------------ */}
