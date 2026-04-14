@@ -5,6 +5,13 @@ import { useEffect, useRef, useState } from "react";
 export default function HeroVideoBackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [visible, setVisible] = useState(true);
+  const [isIOS, setIsIOS] = useState(false);
+
+  useEffect(() => {
+    const ua = navigator.userAgent;
+    const iPadOS = navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1;
+    setIsIOS(/iPad|iPhone|iPod/.test(ua) || iPadOS);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -16,6 +23,8 @@ export default function HeroVideoBackground() {
   }, []);
 
   useEffect(() => {
+    if (isIOS) return;
+
     const video = videoRef.current;
     if (!video) return;
 
@@ -60,7 +69,7 @@ export default function HeroVideoBackground() {
       video.removeEventListener("loadedmetadata", onReady);
       window.cancelAnimationFrame(rafId);
     };
-  }, []);
+  }, [isIOS]);
 
   if (!visible) return null;
 
@@ -70,7 +79,10 @@ export default function HeroVideoBackground() {
       muted
       playsInline
       preload="auto"
+      poster="/video/hero-poster.jpg"
       aria-hidden
+      autoPlay={isIOS}
+      loop={isIOS}
       className="absolute inset-0 h-full w-full object-cover"
       style={{ willChange: "transform" }}
     >
