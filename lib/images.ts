@@ -21,8 +21,7 @@ export const IMAGES = {
     "https://images.unsplash.com/photo-1551836022-4c4c79ecde51?w=800&h=450&fit=crop",
 
   // Team
-  shamim:
-    "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=800&fit=crop",
+  shamim: "/solicitors/shamim.png",
   placeholder_person:
     "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=600&h=800&fit=crop&q=30",
 
